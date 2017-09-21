@@ -1,0 +1,7 @@
+{
+  "AzureSettings": {
+    "Endpoint": "https://westeurope.api.cognitive.microsoft.com/vision/v1.0",
+    "Key1": "4b046bc74e384b25a7efe47b0a66835a",
+    "Key2": "2f45c1d0e1d149f290254f1eb52748a1"
+  }
+}
