@@ -30,7 +30,7 @@ namespace ProcessDocument
         /// Gets the text visible in the specified image file by using the Computer Vision REST API.
         /// </summary>
         /// <param name="imageFilePath">The image file.</param>
-        private static async void MakeOCRRequest(string imageFilePath)
+        private async Task<string> MakeOCRRequestAsync(string imageFilePath)
         {
             HttpClient client = new HttpClient();
 
@@ -62,7 +62,9 @@ namespace ProcessDocument
 
                 // Display the JSON response.
                 Console.WriteLine("\nResponse:\n");
-                Console.WriteLine(contentString.JsonPrettyPrint());
+                var result = contentString.JsonPrettyPrint();
+                Console.WriteLine(result);
+                return result;
             }
         }
 

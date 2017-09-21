@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProcessDocument
 {
@@ -29,9 +30,10 @@ namespace ProcessDocument
         /// Gets the handwritten text from the specified image file by using the Computer Vision REST API.
         /// </summary>
         /// <param name="imageFilePath">The image file with handwritten text.</param>
-        private static async void ReadHandwrittenText(string imageFilePath)
+        private async Task<string> ReadHandwrittenTextAsync(string imageFilePath)
         {
             HttpClient client = new HttpClient();
+            string result = "";
 
             // Request headers.
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _apiKeys);
@@ -50,7 +52,7 @@ namespace ProcessDocument
             string operationLocation = null;
 
             // Request body. Posts a locally stored JPEG image.
-            byte[] byteData = GetImageAsByteArray(imageFilePath);
+            byte[] byteData = imageFilePath.GetImageAsByteArray();
             ByteArrayContent content = new ByteArrayContent(byteData);
 
             // This example uses content type "application/octet-stream".
@@ -68,8 +70,9 @@ namespace ProcessDocument
                 // Display the JSON error data.
                 Console.WriteLine("\nError:\n");
                 var res = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(res.JsonPrettyPrint());
-                return;
+                result = res.JsonPrettyPrint();
+                Console.WriteLine(result);
+                return result;
             }
 
             // The second REST call retrieves the text written in the image.
@@ -92,22 +95,17 @@ namespace ProcessDocument
 
             if (i == 10 && contentString.IndexOf("\"status\":\"Succeeded\"") == -1)
             {
-                Console.WriteLine("\nTimeout error.\n");
-                return;
+                result = "\nTimeout error.\n";
+                Console.WriteLine(result);
+                return result;
             }
 
             // Display the JSON response.
             Console.WriteLine("\nResponse:\n");
-            Console.WriteLine(contentString.JsonPrettyPrint());
+            result = contentString.JsonPrettyPrint();
+            Console.WriteLine(result);
+            return result;
         }
-        private static byte[] GetImageAsByteArray(string imageFilePath)
-        {
-            FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-            BinaryReader binaryReader = new BinaryReader(fileStream);
-            return binaryReader.ReadBytes((int)fileStream.Length);
-        }
-
-        
 
     }
 }
