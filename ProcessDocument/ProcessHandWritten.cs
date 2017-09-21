@@ -67,7 +67,8 @@ namespace ProcessDocument
             {
                 // Display the JSON error data.
                 Console.WriteLine("\nError:\n");
-                Console.WriteLine(JsonPrettyPrint(await response.Content.ReadAsStringAsync()));
+                var res = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(res.JsonPrettyPrint());
                 return;
             }
 
@@ -97,7 +98,7 @@ namespace ProcessDocument
 
             // Display the JSON response.
             Console.WriteLine("\nResponse:\n");
-            Console.WriteLine(JsonPrettyPrint(contentString));
+            Console.WriteLine(contentString.JsonPrettyPrint());
         }
         private static byte[] GetImageAsByteArray(string imageFilePath)
         {

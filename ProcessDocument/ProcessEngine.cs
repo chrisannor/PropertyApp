@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProcessDocument
 {
-    public class ProcessEngine
+    public static class ProcessEngine
     {
 
         /// <summary>
@@ -13,7 +13,7 @@ namespace ProcessDocument
         /// </summary>
         /// <param name="imageFilePath">The image file to read.</param>
         /// <returns>The byte array of the image data.</returns>
-        static byte[] GetImageAsByteArray(string imageFilePath)
+        public static byte[] GetImageAsByteArray(this string imageFilePath)
         {
             FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
             BinaryReader binaryReader = new BinaryReader(fileStream);
@@ -24,7 +24,7 @@ namespace ProcessDocument
         /// </summary>
         /// <param name="json">The raw JSON string to format.</param>
         /// <returns>The formatted JSON string.</returns>
-        private static string JsonPrettyPrint(string json)
+        public static string JsonPrettyPrint(this string json)
         {
             if (string.IsNullOrEmpty(json))
                 return string.Empty;
