@@ -30,7 +30,7 @@ namespace ProcessDocument
         /// Gets the handwritten text from the specified image file by using the Computer Vision REST API.
         /// </summary>
         /// <param name="imageFilePath">The image file with handwritten text.</param>
-        private async Task<string> ReadHandwrittenTextAsync(string imageFilePath)
+        public async Task<string> ReadHandwrittenTextAsync(string imageFilePath)
         {
             HttpClient client = new HttpClient();
             string result = "";
@@ -42,7 +42,7 @@ namespace ProcessDocument
             string requestParameters = "handwriting=true";
 
             // Assemble the URI for the REST API Call.
-            string uri = _uri + "?" + requestParameters;
+            string uri = _uri + "/textOperations?" + requestParameters;
 
             HttpResponseMessage response = null;
 

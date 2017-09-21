@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyApp", "PropertyApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessDocument", "ProcessDocument\ProcessDocument.csproj", "{D6E7369B-96DE-4515-8307-61515AA99DE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfSharpCore", "..\..\PDFProject\PdfSharpCore\PdfSharpCore.csproj", "{2CB616CB-7E16-4C5C-8CEA-9A01188926B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D6E7369B-96DE-4515-8307-61515AA99DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E7369B-96DE-4515-8307-61515AA99DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E7369B-96DE-4515-8307-61515AA99DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB616CB-7E16-4C5C-8CEA-9A01188926B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB616CB-7E16-4C5C-8CEA-9A01188926B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB616CB-7E16-4C5C-8CEA-9A01188926B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB616CB-7E16-4C5C-8CEA-9A01188926B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
